@@ -1,0 +1,6 @@
+"","days_opened","days_between_first_and_last_comment","number_of_comments","days_first_comment_after_creation","days_last_comment_before_closed"
+"days_opened","-","0.408084753336654","0.374791888077163","0.512448832267064","0.142093743021401"
+"days_between_first_and_last_comment","0.408084753336654","-","0.550864338231884","0.0248126628763414","0.821032184514552"
+"number_of_comments","0.374791888077163","0.550864338231884","-","-0.0934732535482478","0.299660085712762"
+"days_first_comment_after_creation","0.512448832267064","0.0248126628763414","-0.0934732535482478","-","0.0807424333131367"
+"days_last_comment_before_closed","0.142093743021401","0.821032184514552","0.299660085712762","0.0807424333131367","-"

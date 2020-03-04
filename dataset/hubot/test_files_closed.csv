@@ -1,0 +1,27 @@
+pull_request,test_files
+https://github.com/1378,"['robot_test.js', 'test-script.coffee', 'test-script.js']"
+https://github.com/1370,['middleware_test.coffee']
+https://github.com/1366,"['es2015_test.js', 'middleware_test.js', 'robot_test.js']"
+https://github.com/1339,"['middleware_test.js', 'response_test.js']"
+https://github.com/1162,"['brain_test.coffee', 'listener_test.coffee', 'message_test.coffee', 'user_test.coffee']"
+https://github.com/1128,['robot_test.coffee']
+https://github.com/1127,"['listener_test.coffee', 'robot_test.coffee']"
+https://github.com/1115,['robot_test.coffee']
+https://github.com/1104,['robot_test.coffee']
+https://github.com/1091,"['listener_test.coffee', 'robot_test.coffee']"
+https://github.com/1056,['robot_test.coffee']
+https://github.com/1048,['robot_test.coffee']
+https://github.com/1031,['robot_test.coffee']
+https://github.com/949,['listener_test.coffee']
+https://github.com/924,"['listener_test.coffee', 'robot_test.coffee']"
+https://github.com/871,['robot_test.coffee']
+https://github.com/868,['robot_test.coffee']
+https://github.com/841,"['adapter_test.coffee', 'brain_test.coffee', 'google_images_test.coffee', 'httpd_test.coffee', 'listener_test.coffee', 'message_test.coffee', 'robot_test.coffee', 'rules_test.coffee', 'test.coffee', 'tests.coffee', 'user_test.coffee']"
+https://github.com/772,"['httpd_test.coffee', 'test.coffee', 'tests.coffee']"
+https://github.com/714,"['test.md', 'test.coffee']"
+https://github.com/541,"['brain_test.coffee', 'httpd_test.coffee', 'tests.coffee']"
+https://github.com/504,"['httpd_test.coffee', 'test.coffee', 'tests.coffee']"
+https://github.com/384,"['brain_test.coffee', 'google_images_test.coffee', 'robot_test.coffee', 'rules_test.coffee', 'test.coffee', 'tests.coffee', 'user_test.coffee', 'adapter_test.coffee', 'brain_test.coffee', 'creator_test.coffee', 'listener_test.coffee', 'message_test.coffee', 'response_test.coffee', 'robot_test.coffee', 'user_test.coffee']"
+https://github.com/297,"['test_adapter.coffee', 'test_brain.coffee', 'test_creator.coffee', 'test_google_images.coffee', 'test_listener.coffee', 'test_message.coffee', 'test_robot.coffee', 'test_rules.coffee', 'test_user.coffee']"
+https://github.com/58,"['google_images_test.coffee', 'robot_test.coffee', 'tests.coffee']"
+https://github.com/31,['tests.coffee']
