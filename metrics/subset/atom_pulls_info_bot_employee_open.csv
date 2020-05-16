@@ -1,0 +1,2 @@
+id,state,user,employee_open,user_closed,employee_merged,days_opened,number_of_comments,days_between_first_and_last_comment,days_first_comment_after_creation,days_last_comment_before_closed,days_opened_group,days_between_first_and_last_comment_group,days_first_comment_after_creation_group,days_last_comment_before_closed_group
+2918,closed,atom-bot,bot,null,volunter,0,0,null,null,null,NA,NA,NA,NA
