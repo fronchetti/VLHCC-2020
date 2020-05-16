@@ -66,6 +66,30 @@ gitlfs_pulls_info <- load_data(paste0(local_path, "metrics/full/gitlfs_pulls_inf
 hubot_pulls_info <- load_data(paste0(local_path, "metrics/full/hubot_pulls_info.csv"))
 linguist_pulls_info <- load_data(paste0(local_path, "metrics/full/linguist_pulls_info.csv"))
 
+atom_commits_info <- load_data(paste0(local_path, "metrics/full/atom_commits_info.csv"))
+atom_commits_info$user <- gsub('\\s+', '', atom_commits_info$user)
+atom_commits_info$user <- tolower(atom_commits_info$user)
+electron_commits_info <- load_data(paste0(local_path, "metrics/full/electron_commits_info.csv"))
+electron_commits_info$user <- gsub('\\s+', '', electron_commits_info$user)
+electron_commits_info$user <- tolower(electron_commits_info$user)
+gitlfs_commits_info <- load_data(paste0(local_path, "metrics/full/gitlfs_commits_info.csv"))
+gitlfs_commits_info$user <- gsub('\\s+', '', gitlfs_commits_info$user)
+gitlfs_commits_info$user <- tolower(gitlfs_commits_info$user)
+hubot_commits_info <- load_data(paste0(local_path, "metrics/full/hubot_commits_info.csv"))
+hubot_commits_info$user <- gsub('\\s+', '', hubot_commits_info$user)
+hubot_commits_info$user <- tolower(hubot_commits_info$user)
+linguist_commits_info <- load_data(paste0(local_path, "metrics/full/linguist_commits_info.csv"))
+linguist_commits_info$user <- gsub('\\s+', '', linguist_commits_info$user)
+linguist_commits_info$user <- tolower(linguist_commits_info$user)
+
+
+
+number_issues <- nrow(atom_issues_info) + nrow(electron_issues_info) + nrow(gitlfs_issues_info) + nrow(hubot_issues_info) + nrow(linguist_issues_info)
+number_pulls <- nrow(atom_pulls_info) + nrow(electron_pulls_info) + nrow(gitlfs_pulls_info) + nrow(hubot_pulls_info) + nrow(linguist_pulls_info)
+
+number_issues
+number_pulls
+
 
 #Add columns in the data with the information of the cuts
 for (feat in feats_to_cut_issues) {
@@ -86,6 +110,32 @@ for (feat in feats_to_cut_pulls) {
   hubot_pulls_info <- create_intervals(hubot_pulls_info, feat)
   linguist_pulls_info <- create_intervals(linguist_pulls_info, feat)
 }
+
+
+atom_commits_info <- create_intervals_date(atom_commits_info)
+electron_commits_info <- create_intervals_date(electron_commits_info)
+gitlfs_commits_info <- create_intervals_date(gitlfs_commits_info)
+hubot_commits_info <- create_intervals_date(hubot_commits_info)
+linguist_commits_info <- create_intervals_date(linguist_commits_info)
+
+
+
+#Subseting Commits
+
+atom_commits_info_employee <- subseting(atom_commits_info, atom_commits_info$site_admin, "TRUE", "commits")
+atom_commits_info_volunter <- subseting(atom_commits_info, atom_commits_info$site_admin, "FALSE", "commits")
+
+electron_commits_info_employee <- subseting(electron_commits_info, electron_commits_info$site_admin, "TRUE", "commits")
+electron_commits_info_volunter <- subseting(electron_commits_info, electron_commits_info$site_admin, "FALSE", "commits")
+
+gitlfs_commits_info_employee <- subseting(gitlfs_commits_info, gitlfs_commits_info$site_admin, "TRUE", "commits")
+gitlfs_commits_info_volunter <- subseting(gitlfs_commits_info, gitlfs_commits_info$site_admin, "FALSE", "commits")
+
+hubot_commits_info_employee <- subseting(hubot_commits_info, hubot_commits_info$site_admin, "TRUE", "commits")
+hubot_commits_info_volunter <- subseting(hubot_commits_info, hubot_commits_info$site_admin, "FALSE", "commits")
+
+linguist_commits_info_employee <- subseting(linguist_commits_info, linguist_commits_info$site_admin, "TRUE", "commits")
+linguist_commits_info_volunter <- subseting(linguist_commits_info, linguist_commits_info$site_admin, "FALSE", "commits")
 
 
 #Subseting Issues
@@ -131,9 +181,27 @@ linguist_pulls_info_volunter <- subseting(linguist_pulls_info, linguist_pulls_in
 linguist_pulls_info_bot <- subseting(linguist_pulls_info, linguist_pulls_info$employee_open, "bot", "employee_open")
 
 
+number_issues_employee <- nrow(atom_issues_info_employee) + nrow(electron_issues_info_employee) + nrow(gitlfs_issues_info_employee) + nrow(hubot_issues_info_employee) + nrow(linguist_issues_info_employee)
+number_pulls_employee <- nrow(atom_pulls_info_employee) + nrow(electron_pulls_info_employee) + nrow(gitlfs_pulls_info_employee) + nrow(hubot_pulls_info_employee) + nrow(linguist_pulls_info_employee)
+
+number_issues_employee
+number_pulls_employee
+
+number_issues_volunter <- nrow(atom_issues_info_volunter) + nrow(electron_issues_info_volunter) + nrow(gitlfs_issues_info_volunter) + nrow(hubot_issues_info_volunter) + nrow(linguist_issues_info_volunter)
+number_pulls_volunter <- nrow(atom_pulls_info_volunter) + nrow(electron_pulls_info_volunter) + nrow(gitlfs_pulls_info_volunter) + nrow(hubot_pulls_info_volunter) + nrow(linguist_pulls_info_volunter)
+
+number_issues_volunter
+number_pulls_volunter
+
+(sum(atom_pulls_info_volunter$user_closed == 'null' & atom_pulls_info_volunter$state == 'closed') +
+sum(electron_pulls_info_volunter$user_closed == 'null' & electron_pulls_info_volunter$state == 'closed') +
+sum(gitlfs_pulls_info_volunter$user_closed == 'null' & gitlfs_pulls_info_volunter$state == 'closed') +
+sum(hubot_pulls_info_volunter$user_closed == 'null' & hubot_pulls_info_volunter$state == 'closed') +
+sum(linguist_pulls_info_volunter$user_closed == 'null' & linguist_pulls_info_volunter$state == 'closed'))  / number_pulls_volunter
 
 issues_plots_path <- paste0(local_path, "plots/issues/stacked/")
 pulls_plots_path <- paste0(local_path, "plots/pulls/stacked/")
+commits_plots_path <- paste0(local_path, "plots/commits/stacked/")
 
 
 

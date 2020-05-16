@@ -1,6 +1,9 @@
 source("D:/Pesquisa/icse-2019/scripts/imports.R")
 source("D:/Pesquisa/icse-2019/scripts/plots.R")
 
+source("D:/Pesquisa/icse-2019/scripts/commits.R")
+commits()
+
 source("D:/Pesquisa/icse-2019/scripts/issues.R")
 issues()
 
@@ -9,4 +12,4 @@ pulls()
 
 source("D:/Pesquisa/icse-2019/scripts/nature.R")
 nature()
-  
+

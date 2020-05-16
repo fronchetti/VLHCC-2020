@@ -22,6 +22,24 @@ create_intervals <- function(input_data, feat) {
   
 }
 
+create_intervals_date <- function(input_data) {
+ 
+  
+  
+  attr(input_data$date, "tzone") <- "US/Pacific"
+  
+  input_data$day_of_week <- weekdays(as.Date(input_data$date))
+  
+  input_data$period_of_day <- cut(as.integer(format(input_data$date, "%H")) + 1,
+                                 breaks = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24)
+                                  #breaks = c(0, 8, 18, 24)
+                                  #seq(0, 24, 1)
+                                  )
+  
+  return (input_data)
+}
+
+
 #' Formmat the data to stack plot and save
 #'
 #' @param df1 the first input dataframe
@@ -47,11 +65,14 @@ format_data_to_stacked_plot <- function(df1, df2, df3, df4, df5, group_feat_name
 
 #TODO Documentation
 #format with frequency - individually
-format_data <- function(project, input_data, group_feat_name) {
+format_data <- function(input_data, group_feat_name) {
   
   data_as_table <- table(input_data[group_feat_name])
   
   data_as_df <- as.data.frame(data_as_table)
+  
+  print(data_as_df)
+  print(group_feat_name)
   
   colnames(data_as_df) <- c(group_feat_name, "frequency")
   
@@ -77,10 +98,28 @@ format_data_to_stacked_grouped <- function(df1, df2, df3, df4, df5, df6, df7, df
   write_csv(x = projects_data, path = path_out)
 }
 
+format_commit_data_to_stacked <- function(df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, project, group_feat_name, type) {
+  
+  df <- format_data("atom", df1, group_feat_name)
+  
+  df
+  
+  
+  frequency_vector <- cbind(df1$frequency, df2$frequency, df3$frequency, df4$frequency, df5$frequency, df6$frequency, df7$frequency, df8$frequency, df9$frequency, df10$frequency)
+  #projects_data <- as.data.frame(frequency_vector)
+  
+  #colnames(projects_data) <- c("AE", "AV", "EE", "EV",
+  #                             "HE", "HV", "GE", "GV", "LE", "LV")
+  
+  #path_out <- paste0(local_path, "metrics/data_plot/", group_feat_name, "_", type, ".csv")
+  #write_csv(x = projects_data, path = path_out)
+  
+}
+
 #TODO Documentation
 # Features to cut
 feats_to_cut_issues <- c("days_opened", "days_between_first_and_last_comment", "days_first_comment_after_creation", "days_last_comment_before_closed")
-feats_to_cut_pulls <- c("days_opened", "days_between_first_and_last_comment", "days_first_comment_after_creation", "days_last_comment_before_merged")
+feats_to_cut_pulls <- c("days_opened", "days_between_first_and_last_comment", "days_first_comment_after_creation", "days_last_comment_before_closed")
 
 #TODO Documentation
 check_bot <- function(x){
